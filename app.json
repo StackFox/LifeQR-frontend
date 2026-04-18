@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "EHIS - Emergency Health Identity",
+    "slug": "ehis-mobile",
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1a2e"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "EHIS needs camera access to scan patient QR codes",
+        "NFCReaderUsageDescription": "EHIS uses NFC to access emergency patient identity when a phone is locked"
+      },
+      "entitlements": {
+        "com.apple.developer.nfc.readersession.formats": [
+          "NDEF"
+        ]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1a1a2e"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.NFC"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-sqlite",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "EHIS needs camera access to scan patient QR codes"
+        }
+      ]
+    ]
+  }
+}
