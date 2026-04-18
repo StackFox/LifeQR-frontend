@@ -5,11 +5,11 @@ import Constants from 'expo-constants';
 // Defaults to localhost:5000 for local development
 function getBaseUrl(): string {
   const envApiUrl = Constants.expoConfig?.extra?.apiBaseUrl;
-  
+
   if (envApiUrl) {
     return envApiUrl;
   }
-  
+
   // Fallback for local development
   return 'http://localhost:5000';
 }
