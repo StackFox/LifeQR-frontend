@@ -44,6 +44,9 @@
           "cameraPermission": "EHIS needs camera access to scan patient QR codes"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "apiBaseUrl": "https://life-qr-backend.vercel.app"
+    }
   }
 }

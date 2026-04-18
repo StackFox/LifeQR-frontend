@@ -1,22 +1,16 @@
 import axios from 'axios';
-import { Platform } from 'react-native';
 import Constants from 'expo-constants';
 
-// Auto-detect backend URL based on platform:
-// - Android emulator: 10.0.2.2 maps to host localhost
-// - Real device (Expo Go): use debuggerHost IP (the dev machine's LAN IP)
-// - iOS simulator: localhost works directly
+// Get the API base URL from environment variables
+// Defaults to localhost:5000 for local development
 function getBaseUrl(): string {
-  if (Platform.OS === 'android') {
-    // If running on real device via Expo Go, use the dev server's IP
-    const debuggerHost = Constants.expoConfig?.hostUri ?? Constants.manifest2?.extra?.expoGo?.debuggerHost;
-    if (debuggerHost) {
-      const ip = debuggerHost.split(':')[0];
-      return `http://${ip}:5000`;
-    }
-    // Fallback for emulator
-    return 'http://10.0.2.2:5000';
+  const envApiUrl = Constants.expoConfig?.extra?.apiBaseUrl;
+  
+  if (envApiUrl) {
+    return envApiUrl;
   }
+  
+  // Fallback for local development
   return 'http://localhost:5000';
 }
 
